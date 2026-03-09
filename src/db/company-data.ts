@@ -29,6 +29,16 @@ export interface Company {
     history: HistoryEntry[];
 }
 
+// Helper para construir un objeto Company con campos obligatorios inicializados
+export const createEmptyCompany = (id: string, name: string): Company => ({
+    id,
+    name,
+    roles: [],
+    users: [],
+    products: [],
+    history: []
+});
+
 const initialCompanies: Company[] = [
     {
         id: 'textiles-del-sur',
