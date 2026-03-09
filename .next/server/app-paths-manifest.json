@@ -1,8 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/platform-admin/page": "app/platform-admin/page.js",
-  "/[companyId]/login/page": "app/[companyId]/login/page.js",
-  "/products/page": "app/products/page.js",
-  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
-  "/inventory/page": "app/inventory/page.js"
-}
