@@ -2,10 +2,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SuperAdminGuard } from '../../db/SuperAdminGuard';
-import { getCompanies, saveCompanies, Company, superAdmin, createEmptyCompany } from '../../db/company-data';
+import { getCompanies, saveCompanies, Company } from '../../db/company-data';
 import { Building2, Link as LinkIcon, Plus, Edit, ShieldCheck } from 'lucide-react';
-import { useAuth, User } from '../../../AuthContext';
-import { useRouter } from 'next/navigation';
 
 // Función para crear un 'slug' amigable para la URL a partir del nombre
 const createSlug = (name: string) => {
@@ -13,8 +11,6 @@ const createSlug = (name: string) => {
 };
 
 export default function SuperAdminDashboard() {
-    const { login, openPinModal } = useAuth();
-    const router = useRouter();
     // Usamos un estado para simular que la lista de empresas se actualiza
     const [companies, setCompanies] = useState<Company[]>([]);
     const [newCompanyName, setNewCompanyName] = useState('');
@@ -30,8 +26,14 @@ export default function SuperAdminDashboard() {
         if (!newCompanyName.trim()) return;
 
         const slug = createSlug(newCompanyName);
-        // usar el constructor para mantener consistencia
-        const newCompany: Company = createEmptyCompany(slug, newCompanyName);
+        const newCompany: Company = {
+            id: slug,
+            name: newCompanyName,
+            users: [],
+            roles: ['admin', 'empleado'],
+            products: [],
+            history: [],
+        };
 
         const updatedCompanies = [...companies, newCompany];
         setCompanies(updatedCompanies);
