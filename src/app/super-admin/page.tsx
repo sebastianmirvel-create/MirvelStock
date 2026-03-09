@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SuperAdminGuard } from '../../db/SuperAdminGuard';
-import { getCompanies, saveCompanies, Company, superAdmin } from '../../db/company-data';
+import { getCompanies, saveCompanies, Company, superAdmin, createEmptyCompany } from '../../db/company-data';
 import { Building2, Link as LinkIcon, Plus, Edit, ShieldCheck } from 'lucide-react';
 import { useAuth, User } from '../../../AuthContext';
 import { useRouter } from 'next/navigation';
@@ -30,11 +30,8 @@ export default function SuperAdminDashboard() {
         if (!newCompanyName.trim()) return;
 
         const slug = createSlug(newCompanyName);
-        const newCompany: Company = {
-            id: slug,
-            name: newCompanyName,
-            users: [] // La nueva empresa empieza sin usuarios
-        };
+        // usar el constructor para mantener consistencia
+        const newCompany: Company = createEmptyCompany(slug, newCompanyName);
 
         const updatedCompanies = [...companies, newCompany];
         setCompanies(updatedCompanies);
