@@ -14,7 +14,7 @@
     "dexie": "^3.2.4",
     "dexie-react-hooks": "^1.1.7",
     "lucide-react": "^0.344.0",
-    "next": "^16.1.6",
+    "next": "^14.2.35",
     "react": "^18",
     "react-dom": "^18",
     "react-zxing": "^2.1.0",
