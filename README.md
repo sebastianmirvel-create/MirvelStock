@@ -1,5 +1,5 @@
 # MirvelStock
 
-+Sistema de gestión de inventario.
+Sistema de gestión de inventario.
 
 ```

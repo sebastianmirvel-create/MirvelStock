@@ -12,6 +12,7 @@ const createSlug = (name: string) => {
 
 export default function SuperAdminDashboard() {
     // Usamos un estado para simular que la lista de empresas se actualiza
+    // Force deploy check
     const [companies, setCompanies] = useState<Company[]>([]);
     const [newCompanyName, setNewCompanyName] = useState('');
     const [generatedLink, setGeneratedLink] = useState('');
